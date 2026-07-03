@@ -52,20 +52,40 @@ tailwind.config = {
   :focus-visible { outline:2px solid #34d399; outline-offset:2px; border-radius:6px; }
   .qr-pulse { animation: qrpulse 2.2s ease-in-out infinite; }
   @keyframes qrpulse { 0%,100%{ box-shadow:0 0 0 0 rgba(16,185,129,.25);} 50%{ box-shadow:0 0 0 10px rgba(16,185,129,0);} }
+  .grad-text { background:linear-gradient(100deg,#34d399 10%,#38bdf8 60%,#34d399 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .card-i { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+  .card-i:hover { transform: translateY(-3px); border-color: rgba(16,185,129,.45); box-shadow: 0 14px 38px rgba(0,0,0,.5); }
+  .pw-border { border:1px solid transparent;
+    background: linear-gradient(#121b24,#0e1a17) padding-box,
+                linear-gradient(120deg, rgba(16,185,129,.8), rgba(56,189,248,.5), rgba(16,185,129,.8)) border-box; }
+  .chip-btn { transition: transform .2s ease, background-color .2s ease, color .2s ease, border-color .2s ease; }
+  .chip-btn:hover { transform: translateY(-1px); }
+  .chip-btn:active { transform: translateY(0) scale(.97); }
 </style>
 </head>
 <body class="grain text-slate-200 font-sans min-h-screen antialiased">
 
-<!-- ============ HEADER ============ -->
-<header class="max-w-5xl mx-auto px-4 sm:px-6 pt-10 pb-6">
-  <div class="flex items-center gap-3">
-    <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-mint-500 to-emerald-700 flex items-center justify-center shadow-glow shrink-0">
-      <i data-lucide="route" class="w-6 h-6 text-ink-950"></i>
+<!-- ============ HERO ============ -->
+<header class="max-w-5xl mx-auto px-4 sm:px-6 pt-10 pb-8">
+  <div class="flex items-center gap-3 mb-8">
+    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mint-500 to-emerald-700 flex items-center justify-center shadow-glow shrink-0">
+      <i data-lucide="route" class="w-5 h-5 text-ink-950"></i>
     </div>
-    <div>
-      <h1 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-white">AI Career Pivot Roadmap</h1>
-      <p class="text-sm text-slate-400">Lộ trình chuyển ngành được cá nhân hoá — biết mình có gì, thiếu gì, và học gì trước.</p>
-    </div>
+    <span class="font-display font-bold text-lg tracking-tight text-white">AI Career Pivot Roadmap</span>
+    <span class="ml-auto inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-mint-300 bg-mint-500/10 border border-mint-500/30 rounded-full px-3 py-1.5">
+      <i data-lucide="sparkles" class="w-3.5 h-3.5"></i><span class="hidden sm:inline">Hỗ trợ bởi</span> AI
+    </span>
+  </div>
+  <h1 class="font-display font-bold text-3xl sm:text-5xl leading-tight tracking-tight text-white max-w-3xl">
+    Chuyển ngành <span class="grad-text">không mò mẫm</span> —<br class="hidden sm:block">
+    biết mình có gì, thiếu gì, học gì trước.
+  </h1>
+  <p class="mt-4 text-sm sm:text-base text-slate-400 max-w-2xl">Chọn nghề hiện tại và nghề mơ ước, AI sẽ phân tích khoảng cách kỹ năng, ước tính thời gian, và dựng lộ trình học theo từng tuần — kèm checklist để bạn bám sát tiến độ.</p>
+  <div class="mt-6 flex flex-wrap gap-x-7 gap-y-3 text-xs text-slate-400">
+    <span class="inline-flex items-center gap-2"><i data-lucide="git-branch" class="w-4 h-4 text-mint-400"></i>12+ cặp nghề có sẵn</span>
+    <span class="inline-flex items-center gap-2"><i data-lucide="bot" class="w-4 h-4 text-mint-400"></i>AI sinh lộ trình cho nghề bất kỳ</span>
+    <span class="inline-flex items-center gap-2"><i data-lucide="list-checks" class="w-4 h-4 text-mint-400"></i>Checklist theo tuần, lưu tiến độ</span>
+    <span class="inline-flex items-center gap-2"><i data-lucide="file-down" class="w-4 h-4 text-mint-400"></i>Xuất PDF hướng dẫn</span>
   </div>
 </header>
 
@@ -114,15 +134,25 @@ tailwind.config = {
         Tạo lộ trình
       </button>
     </div>
+    <div class="mt-5 pt-4 border-t border-ink-700 flex flex-wrap items-center gap-2">
+      <span class="text-[11px] text-slate-500 font-semibold uppercase tracking-widest mr-1">Thử nhanh:</span>
+      <button class="chip-btn quick-pair text-xs text-slate-300 bg-ink-800 border border-ink-600 hover:border-mint-500/50 hover:text-mint-300 rounded-full px-3.5 py-1.5" data-cur="sales" data-tgt="data_analyst">Sales → Data Analyst</button>
+      <button class="chip-btn quick-pair text-xs text-slate-300 bg-ink-800 border border-ink-600 hover:border-mint-500/50 hover:text-mint-300 rounded-full px-3.5 py-1.5" data-cur="accounting" data-tgt="data_analyst">Kế toán → Data Analyst</button>
+      <button class="chip-btn quick-pair text-xs text-slate-300 bg-ink-800 border border-ink-600 hover:border-mint-500/50 hover:text-mint-300 rounded-full px-3.5 py-1.5" data-cur="hospitality" data-tgt="uiux">Khách sạn → UI/UX</button>
+      <button class="chip-btn quick-pair text-xs text-slate-300 bg-ink-800 border border-ink-600 hover:border-mint-500/50 hover:text-mint-300 rounded-full px-3.5 py-1.5" data-cur="sales" data-tgt="prompt_engineer">Sales → Prompt Engineer</button>
+    </div>
   </section>
 
   <!-- ============ RESULTS ============ -->
   <div id="results" class="hidden">
 
+    <!-- Stat chips -->
+    <div id="statChips" class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3"></div>
+
     <!-- Dashboard -->
-    <section class="mt-8 grid gap-5 lg:grid-cols-[1fr_300px]">
+    <section class="mt-5 grid gap-5 lg:grid-cols-[1fr_300px]">
       <!-- Skill gap -->
-      <div class="fade-up bg-ink-850/80 border border-ink-700 rounded-2xl p-5 sm:p-7 shadow-card">
+      <div class="fade-up card-i bg-ink-850/80 border border-ink-700 rounded-2xl p-5 sm:p-7 shadow-card">
         <div class="flex items-center gap-2 mb-1">
           <i data-lucide="scan-line" class="w-5 h-5 text-mint-400"></i>
           <h2 class="font-display font-semibold text-lg text-white">Phân tích khoảng cách kỹ năng</h2>
@@ -145,10 +175,11 @@ tailwind.config = {
             <div id="missingList" class="space-y-4"></div>
           </div>
         </div>
+        <div id="aiInsight" class="mt-7 flex items-start gap-3 bg-mint-500/5 border border-mint-500/20 rounded-xl p-4 text-sm text-slate-300"></div>
       </div>
 
       <!-- Timeframe -->
-      <div class="fade-up bg-gradient-to-b from-ink-800 to-ink-850 border border-ink-700 rounded-2xl p-6 shadow-card flex flex-col items-center justify-center text-center">
+      <div class="fade-up card-i bg-gradient-to-b from-ink-800 to-ink-850 border border-ink-700 rounded-2xl p-6 shadow-card flex flex-col items-center justify-center text-center">
         <i data-lucide="timer" class="w-7 h-7 text-mint-400 mb-3"></i>
         <p class="text-xs uppercase tracking-widest text-slate-400 mb-2">Thời gian dự kiến</p>
         <div class="flex items-baseline gap-2">
@@ -899,6 +930,31 @@ async function generate(preserveChecks = false) {
   const months = Math.max(3, Math.round(target.baseMonths * (1 - (transferScore / 100) * 0.35)));
   animateCounter($('monthCounter'), months, 1100);
 
+  /* --- Stat chips & AI insight --- */
+  const totalTasks = target.phases.reduce((s, p) => s + p.weeks.reduce((a, w) => a + w.tasks.length, 0), 0);
+  const statChip = (icon, value, label) => `
+    <div class="card-i flex items-center gap-3.5 bg-ink-850/80 border border-ink-700 rounded-2xl px-5 py-4 shadow-card">
+      <div class="w-10 h-10 rounded-xl bg-mint-500/10 border border-mint-500/25 flex items-center justify-center shrink-0">
+        <i data-lucide="${icon}" class="w-5 h-5 text-mint-400"></i>
+      </div>
+      <div>
+        <p class="font-display font-bold text-xl text-white leading-none">${value}</p>
+        <p class="text-xs text-slate-400 mt-1">${label}</p>
+      </div>
+    </div>`;
+  $('statChips').innerHTML =
+    statChip('recycle', Math.round(transferScore) + '%', 'kỹ năng cũ tận dụng được') +
+    statChip('list-todo', totalTasks + ' việc', 'đầu việc cụ thể trong lộ trình') +
+    statChip('calendar-range', '~' + months * 4 + ' tuần', 'học đều 10–12 giờ/tuần');
+
+  const bestSkill = transferable.reduce((a, b) => (b.level > a.level ? b : a));
+  const keySkill = target.missing.reduce((a, b) => (b.level > a.level ? b : a));
+  $('aiInsight').innerHTML = `
+    <i data-lucide="lightbulb" class="w-5 h-5 text-mint-400 shrink-0 mt-0.5"></i>
+    <p><span class="font-semibold text-mint-300">Nhận định nhanh:</span> lợi thế lớn nhất của bạn là
+    <b class="text-white">${bestSkill.skill}</b> (${bestSkill.level}%) — hãy đưa nó lên đầu CV.
+    Rào cản quan trọng nhất là <b class="text-white">${keySkill.skill}</b>, nên được ưu tiên học ngay từ những tuần đầu tiên.</p>`;
+
   const badge = $('difficultyBadge');
   let diff;
   if (months <= 5) diff = { label: 'Độ khó: Vừa phải', cls: 'text-mint-300 border-mint-500/40 bg-mint-500/10' };
@@ -921,7 +977,8 @@ async function generate(preserveChecks = false) {
   lucide.createIcons();
   updateOverallProgress();
   saveState();
-  $('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (!generate.silent) $('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  generate.silent = false;
 }
 
 function updateOverallProgress() {
@@ -980,7 +1037,7 @@ function phaseHTML(phase, pIdx) {
     <span class="absolute -left-6 sm:-left-8 top-1.5 w-[19px] h-[19px] sm:w-[27px] sm:h-[27px] rounded-full border-2 ${locked ? 'border-ink-600 bg-ink-800' : 'border-mint-500 bg-ink-900 shadow-glow'} flex items-center justify-center">
       ${locked ? '<i data-lucide="lock" class="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-slate-500"></i>' : '<span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-mint-400"></span>'}
     </span>
-    <div class="bg-ink-850/80 border ${locked ? 'border-ink-700' : 'border-mint-600/30'} rounded-2xl p-5 sm:p-6 shadow-card">
+    <div class="card-i bg-ink-850/80 border ${locked ? 'border-ink-700' : 'border-mint-600/30'} rounded-2xl p-5 sm:p-6 shadow-card">
       <div class="flex flex-wrap items-center gap-x-3 gap-y-2 mb-1">
         <h3 class="font-display font-semibold text-base sm:text-lg text-white">${phase.title}</h3>
         <span class="text-xs font-semibold text-slate-400 bg-ink-800 border border-ink-700 rounded-full px-2.5 py-1">${phase.duration}</span>
@@ -1009,7 +1066,7 @@ function paywallHTML() {
     <span class="absolute -left-6 sm:-left-8 top-1.5 w-[19px] h-[19px] sm:w-[27px] sm:h-[27px] rounded-full border-2 border-amber-400/70 bg-ink-900 flex items-center justify-center">
       <i data-lucide="crown" class="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-amber-300"></i>
     </span>
-    <div class="relative overflow-hidden rounded-2xl border border-mint-500/40 bg-gradient-to-br from-ink-800 via-ink-850 to-emerald-950/40 p-6 sm:p-8 shadow-card">
+    <div class="pw-border card-i relative overflow-hidden rounded-2xl p-6 sm:p-8 shadow-card">
       <div class="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-mint-500/10 blur-3xl pointer-events-none"></div>
       <div class="flex items-center gap-2 mb-3">
         <i data-lucide="crown" class="w-5 h-5 text-amber-300"></i>
@@ -1159,6 +1216,17 @@ function unlockPremium() {
 ===================================================================== */
 $('generateBtn').addEventListener('click', () => generate(false));
 $('resetBtn').addEventListener('click', resetProgress);
+
+/* Chip "Thử nhanh" — 1 chạm ra lộ trình ngay */
+document.querySelectorAll('.quick-pair').forEach(btn => {
+  btn.addEventListener('click', () => {
+    $('currentCareer').value = btn.dataset.cur;
+    $('targetCareer').value = btn.dataset.tgt;
+    $('currentCustom').classList.add('hidden');
+    $('targetCustom').classList.add('hidden');
+    generate(false);
+  });
+});
 
 /* Hiện ô nhập tự do khi chọn "Khác (tự nhập)…" */
 [['currentCareer', 'currentCustom'], ['targetCareer', 'targetCustom']].forEach(([sel, inp]) => {
@@ -1337,9 +1405,16 @@ lucide.createIcons();
       } else { $('targetCareer').value = saved.targetKey; }
       state.isPremium = !!saved.isPremium;
       state.checks = saved.checks || {};
+      generate.silent = true;
       await generate(true);
       showToast('Đã khôi phục tiến độ đã lưu từ phiên trước.');
+    } else {
+      generate.silent = true;
+      await generate(false); // lần đầu mở app: hiện sẵn lộ trình mẫu, không để trang trống
     }
+  } else {
+    generate.silent = true;
+    await generate(false); // lần đầu mở app: hiện sẵn lộ trình mẫu, không để trang trống
   }
   if (DEV_MODE && !state.isPremium) togglePremiumPreview();
 })();
